@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 #additional
-/config/keys.js
+/src/config/keys.js
 

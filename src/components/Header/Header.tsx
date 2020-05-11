@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  Typography,
-  makeStyles,
-} from "@material-ui/core";
+import { AppBar, Toolbar, Typography, makeStyles } from "@material-ui/core";
+import AuthButton from "../AuthButton/AuthButton";
 
 type Props = {
   title: String;
@@ -27,6 +22,10 @@ function Header(props: Props) {
         <Typography variant="h5" className={classes.title}>
           Trending
         </Typography>
+
+        {
+          //<AuthButton />
+        }
       </Toolbar>
     </AppBar>
   );
