@@ -23,9 +23,7 @@ function Header(props: Props) {
           Trending
         </Typography>
 
-        {
-          //<AuthButton />
-        }
+        <AuthButton />
       </Toolbar>
     </AppBar>
   );
