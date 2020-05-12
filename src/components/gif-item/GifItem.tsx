@@ -10,7 +10,7 @@ type Props = {
 };
 
 function GifItem(props: Props) {
-  const { id, title, gifUrl, uploader, uploadDate, profileUrl } = props.gif;
+  const { title, gifUrl, uploader, uploadDate, profileUrl } = props.gif;
 
   return (
     <Item>
@@ -28,7 +28,7 @@ function GifItem(props: Props) {
         </Item.Meta>
         <Item.Extra>
           <FavouriteButton size="large" />
-          <ShareButton size="large" />
+          <ShareButton size="large" gif={props.gif} />
         </Item.Extra>
       </Item.Content>
     </Item>

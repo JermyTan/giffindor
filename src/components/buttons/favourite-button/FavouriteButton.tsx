@@ -13,6 +13,7 @@ function FavouriteButton(props: Props) {
         name="star"
         className="revealing-label-container white-text"
         size={props.size}
+        link
       >
         <span className="revealing-label">Favourite</span>
       </Icon>
