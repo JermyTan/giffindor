@@ -33,6 +33,7 @@ const LIMIT = 5;
 ".images.fixed_width.url";
 ".import_datetime";
 ".user.display_name";
+".user.avatar_url"
 */
 function GifList() {
   const gifReducer = (state: ListState, action: any) => {
@@ -82,6 +83,7 @@ function GifList() {
               gifUrl: value.images.fixed_width.url,
               uploadDate: value.import_datetime,
               uploader: value.user.display_name,
+              profileUrl: value.user.avatar_url,
             };
           });
 
