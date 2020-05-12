@@ -27,8 +27,8 @@ function GifItem(props: Props) {
           Upload Date: <strong>{uploadDate}</strong>
         </Item.Meta>
         <Item.Extra>
-          <FavouriteButton size="large" className="white-text" />
-          <ShareButton size="large" className="white-text" />
+          <FavouriteButton size="large" />
+          <ShareButton size="large" />
         </Item.Extra>
       </Item.Content>
     </Item>

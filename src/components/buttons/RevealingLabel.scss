@@ -1,0 +1,18 @@
+.revealing-label-container {
+  display: inline-grid !important;
+  text-align: center !important;
+  margin: 0 2rem 0.25rem 0 !important;
+
+  .revealing-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    opacity: 0;
+    font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  }
+
+  &:hover .revealing-label {
+    opacity: 1;
+    transition: 0.5s;
+  }
+}
