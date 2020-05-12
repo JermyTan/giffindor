@@ -1,10 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  makeStyles,
-  GridList,
-  GridListTile,
-} from "@material-ui/core";
 import axios from "axios";
 import { giphyApiKey } from "../../config/keys";
 
@@ -50,21 +44,22 @@ function Body() {
   };
 
   useEffect(() => {
-    retrieveGifs(0, 25);
+    //retrieveGifs(0, 4);
   }, []);
 
   return (
-    <Container>
-      <GridList>
-        {gifs.map((gif: Gif) => {
-          return (
-            <GridListTile key={gif.id}>
-              <img src={gif.gifUrl} alt={gif.title} />
-            </GridListTile>
-          );
-        })}
-      </GridList>
-    </Container>
+    <div
+      style={{
+        flexGrow: 1,
+        overflowX: "hidden",
+        overflowY: "auto",
+      }}
+    >
+      <p style={{ paddingBottom: "200%" }}>
+        This container can scroll vertically. Give it a try!
+      </p>
+      <p>You made it to the bottom!</p>
+    </div>
   );
 }
 

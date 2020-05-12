@@ -1,31 +1,33 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, makeStyles } from "@material-ui/core";
+import { Segment, Input } from "semantic-ui-react";
 import AuthButton from "../AuthButton/AuthButton";
 
-type Props = {
-  title: String;
-};
-
-const useStyles = makeStyles({
-  title: {
-    flexGrow: 1,
-    textAlign: "center",
-  },
-});
-
-function Header(props: Props) {
-  const classes = useStyles();
-
+function Header() {
   return (
-    <AppBar position="sticky">
-      <Toolbar>
-        <Typography variant="h5" className={classes.title}>
-          Trending
-        </Typography>
-
-        <AuthButton />
-      </Toolbar>
-    </AppBar>
+    <Segment
+      raised
+      compact
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        backgroundColor: "#00BCD4",
+        borderRadius: 0, //clear semantic-ui style
+        top: 0,
+        width: "100%",
+        position: "sticky",
+      }}
+    >
+      <AuthButton style={{ minWidth: "20%" }} />
+      <strong style={{ fontSize: "2rem", margin: "0 1rem 0 1rem" }}>
+        Trending
+      </strong>
+      <Input
+        placeholder="Search..."
+        style={{ minWidth: "20%" }}
+        onKeyDown={(event: any) => console.log(event.key)}
+      />
+    </Segment>
   );
 }
 

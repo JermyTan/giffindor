@@ -1,35 +1,55 @@
-import React, { useState } from "react";
-import { GoogleLogin, GoogleLogout } from "react-google-login";
-import { googleAuthClientId } from "../../config/keys";
+import React, { useContext } from "react";
+import { Button } from "semantic-ui-react";
+import { provider, auth } from "../../firebase";
+import { UserContext } from "../../context-providers/UserProvider";
 
-function AuthButton() {
-  const [loggedIn, setLoggedIn] = useState(false);
+type Props = {
+  style?: any;
+};
+
+function AuthButton(props: Props) {
+  const userContext = useContext(UserContext);
 
   const onError = (error: Error) => {
     console.log(error);
   };
 
-  const onLoginSuccess = (response: any) => {
-    console.log(response);
-    setLoggedIn(true);
+  const onLogin = () => {
+    auth
+      .signInWithPopup(provider)
+      .then((response) => {
+        const uid = response.user?.uid ?? "";
+        const displayName = response.user?.displayName ?? "";
+        const user =
+          uid && displayName
+            ? {
+                uid: uid,
+                displayName: displayName,
+              }
+            : null;
+
+        userContext.setUser(user);
+      })
+      .catch(onError);
   };
 
-  const onLogoutSuccess = () => {
-    setLoggedIn(false);
+  const onLogout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        userContext.setUser(null);
+      })
+      .catch(onError);
   };
 
-  return loggedIn ? (
-    <GoogleLogout
-      clientId={googleAuthClientId}
-      onLogoutSuccess={onLogoutSuccess}
-      onFailure={() => onError(Error("Logout error"))}
-    />
+  return userContext.user ? (
+    <Button onClick={onLogout} style={props.style}>
+      Logout
+    </Button>
   ) : (
-    <GoogleLogin
-      clientId={googleAuthClientId}
-      onSuccess={onLoginSuccess}
-      onFailure={onError}
-    />
+    <Button onClick={onLogin} style={props.style}>
+      Login
+    </Button>
   );
 }
 
