@@ -1,0 +1,11 @@
+.ui.divided.items > .item {
+  border-top: 1px solid white;
+}
+
+.white-text {
+  color: white !important;
+}
+
+.white-meta-text {
+  color: rgba(255, 255, 255, 0.8) !important;
+}

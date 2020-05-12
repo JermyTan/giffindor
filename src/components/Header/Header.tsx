@@ -12,10 +12,11 @@ function Header() {
         alignItems: "center",
         justifyContent: "space-between",
         backgroundColor: "#00BCD4",
-        borderRadius: 0, //clear semantic-ui style
+        borderRadius: 0,
         top: 0,
         width: "100%",
         position: "sticky",
+        zIndex: 100,
       }}
     >
       <AuthButton style={{ minWidth: "20%" }} />

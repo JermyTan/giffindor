@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import Body from "./components/Body/Body";
+import GifList from "./components/gif-list/GifList";
 import TabBar from "./components/TabBar/TabBar";
 import UserProvider from "./context-providers/UserProvider";
 import "./App.css";
@@ -10,8 +10,10 @@ function App() {
     <div className="App">
       <UserProvider>
         <Header />
-        <Body />
-        <TabBar />
+        <GifList />
+        {
+          //<TabBar />
+        }
       </UserProvider>
     </div>
   );
