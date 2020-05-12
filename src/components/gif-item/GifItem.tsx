@@ -16,17 +16,17 @@ function GifItem(props: Props) {
       <Item.Content>
         <Item.Header className="white-text">{title}</Item.Header>
         <Item.Extra>
-          <Image src={profileUrl} size="tiny" rounded bordered />
+          <Image src={profileUrl} size="tiny" rounded />
         </Item.Extra>
         <Item.Meta className="white-meta-text">
           Uploader: <strong>{uploader}</strong>
         </Item.Meta>
         <Item.Meta className="white-meta-text">
-          Upload date: <strong>{uploadDate}</strong>
+          Upload Date: <strong>{uploadDate}</strong>
         </Item.Meta>
         <Item.Extra>
-          <Icon name="star" className="white-text" />
-          <Icon name="share alternate" className="white-text" />
+          <Icon name="star" className="white-text" size="large" />
+          <Icon name="share alternate" className="white-text" size="large" />
         </Item.Extra>
       </Item.Content>
     </Item>
