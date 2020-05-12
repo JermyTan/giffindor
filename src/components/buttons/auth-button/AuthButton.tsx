@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button } from "semantic-ui-react";
-import { provider, auth } from "../../firebase";
-import { UserContext } from "../../context-providers/UserProvider";
+import { provider, auth } from "../../../firebase";
+import { UserContext } from "../../../context-providers/UserProvider";
 
 type Props = {
   style?: any;

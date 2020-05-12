@@ -1,6 +1,6 @@
 import React from "react";
 import { Segment, Input } from "semantic-ui-react";
-import AuthButton from "../auth-button/AuthButton";
+import AuthButton from "../buttons/auth-button/AuthButton";
 import "./Header.css";
 
 function Header() {

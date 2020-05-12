@@ -1,6 +1,8 @@
 import React from "react";
 import { Item, Icon, Image } from "semantic-ui-react";
 import { Gif } from "../gif-list/GifList";
+import FavouriteButton from "../buttons/favourite-button/FavouriteButton";
+import ShareButton from "../buttons/share-button/ShareButton";
 import "./GifItem.css";
 
 type Props = {
@@ -8,7 +10,7 @@ type Props = {
 };
 
 function GifItem(props: Props) {
-  const { title, gifUrl, uploader, uploadDate, profileUrl } = props.gif;
+  const { id, title, gifUrl, uploader, uploadDate, profileUrl } = props.gif;
 
   return (
     <Item>
@@ -25,8 +27,8 @@ function GifItem(props: Props) {
           Upload Date: <strong>{uploadDate}</strong>
         </Item.Meta>
         <Item.Extra>
-          <Icon name="star" className="white-text" size="large" />
-          <Icon name="share alternate" className="white-text" size="large" />
+          <FavouriteButton size="large" className="white-text" />
+          <ShareButton size="large" className="white-text" />
         </Item.Extra>
       </Item.Content>
     </Item>
