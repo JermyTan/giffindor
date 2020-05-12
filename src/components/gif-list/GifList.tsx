@@ -2,14 +2,15 @@ import React, { useRef, useCallback, useEffect, useReducer } from "react";
 import axios from "axios";
 import { Container, Item, Icon } from "semantic-ui-react";
 import { giphyApiKey } from "../../config/keys";
-import "./GifList.css";
+import GifItem from "../gif-item/GifItem";
 
-type Gif = {
+export type Gif = {
   id: string;
   title: string;
   gifUrl: string;
   uploadDate: string;
   uploader: string;
+  profileUrl: string;
 };
 
 type ListState = {
@@ -24,7 +25,7 @@ type PageState = {
 const STACK_GIFS = "STACK_GIFS";
 const FETCHING_GIFS = "FETCHING_GIFS";
 const NEXT_PAGE = "NEXT_PAGE";
-const LIMIT = 10;
+const LIMIT = 5;
 
 /*
 ".id";
@@ -80,7 +81,7 @@ function GifList() {
               title: value.title,
               gifUrl: value.images.fixed_width.url,
               uploadDate: value.import_datetime,
-              uploader: value.username,
+              uploader: value.user.display_name,
             };
           });
 
@@ -116,23 +117,9 @@ function GifList() {
   return (
     <Container style={{ marginBottom: "4rem" }}>
       <Item.Group divided>
-        {listState.gifs.map((gif) => {
-          return (
-            <Item key={gif.id}>
-              <Item.Image src={gif.gifUrl} size="medium" />
-
-              <Item.Content>
-                <Item.Header className="white-text">{gif.title}</Item.Header>
-                <Item.Meta className="white-meta-text">
-                  Uploader: <strong>{gif.uploader}</strong>
-                </Item.Meta>
-                <Item.Meta className="white-meta-text">
-                  Upload date: <strong>{gif.uploadDate}</strong>
-                </Item.Meta>
-              </Item.Content>
-            </Item>
-          );
-        })}
+        {listState.gifs.map((gif) => (
+          <GifItem key={gif.id} gif={gif} />
+        ))}
       </Item.Group>
       <div id="page-bottom-boundary" ref={bottomBoundaryRef} />
     </Container>

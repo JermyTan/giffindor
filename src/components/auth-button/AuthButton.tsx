@@ -5,6 +5,7 @@ import { UserContext } from "../../context-providers/UserProvider";
 
 type Props = {
   style?: any;
+  className?: string;
 };
 
 function AuthButton(props: Props) {
@@ -43,11 +44,11 @@ function AuthButton(props: Props) {
   };
 
   return userContext.user ? (
-    <Button onClick={onLogout} style={props.style}>
+    <Button onClick={onLogout} style={props.style} className={props.className}>
       Logout
     </Button>
   ) : (
-    <Button onClick={onLogin} style={props.style}>
+    <Button onClick={onLogin} style={props.style} className={props.className}>
       Login
     </Button>
   );
