@@ -1,21 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Menu, Icon, Transition } from "semantic-ui-react";
 import { UserContext } from "../../context-providers/UserProvider";
+import { FavouritesContext } from "../../context-providers/FavouritesProvider";
 import "./TabBar.scss";
 
 const HOME = "Home";
 const FAVOURITE = "Favourite";
 
 function TabBar() {
-  const [value, setValue] = useState(HOME);
   const { user } = useContext(UserContext);
+  const { showFavourites, setShowFavourites } = useContext(FavouritesContext);
 
   const onTabClick = (event: any, data: any) => {
-    setValue(data.name);
+    setShowFavourites(data.showFavourites);
   };
 
   return (
-    <Transition visible={user === null} unmountOnHide animation="fly up">
+    <Transition visible={user !== null} unmountOnHide animation="fly up">
       <Menu
         color="yellow"
         className="bottom-tab-bar"
@@ -25,8 +26,8 @@ function TabBar() {
       >
         <Menu.Item
           className="bottom-tab"
-          name={HOME}
-          active={value === HOME}
+          showFavourites={false}
+          active={!showFavourites}
           onClick={onTabClick}
         >
           <Icon name="home" />
@@ -34,8 +35,8 @@ function TabBar() {
         </Menu.Item>
         <Menu.Item
           className="bottom-tab"
-          name={FAVOURITE}
-          active={value === FAVOURITE}
+          showFavourites={true}
+          active={showFavourites}
           onClick={onTabClick}
         >
           <Icon name="star" />

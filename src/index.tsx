@@ -5,11 +5,14 @@ import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import UserProvider from "./context-providers/UserProvider";
+import FavouritesProvider from "./context-providers/FavouritesProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-      <App />
+      <FavouritesProvider>
+        <App />
+      </FavouritesProvider>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")

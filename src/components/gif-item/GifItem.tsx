@@ -1,5 +1,5 @@
 import React from "react";
-import { Item, Icon, Image } from "semantic-ui-react";
+import { Item, Image } from "semantic-ui-react";
 import { Gif } from "../gif-list/GifList";
 import FavouriteButton from "../buttons/favourite-button/FavouriteButton";
 import ShareButton from "../buttons/share-button/ShareButton";

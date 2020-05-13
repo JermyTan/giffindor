@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useEffect, useReducer } from "react";
 import axios from "axios";
-import { Container, Item, Icon } from "semantic-ui-react";
+import { Container, Item } from "semantic-ui-react";
 import { giphyApiKey } from "../../config/keys";
 import GifItem from "../gif-item/GifItem";
 
@@ -114,7 +114,7 @@ function GifList() {
     if (bottomBoundaryRef.current) {
       scrollObserver(bottomBoundaryRef.current);
     }
-  }, [bottomBoundaryRef]);
+  }, [scrollObserver, bottomBoundaryRef]);
 
   return (
     <Container style={{ marginBottom: "4rem" }}>
