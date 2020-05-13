@@ -4,6 +4,7 @@ import { Gif } from "../gif-list/GifList";
 import FavouriteButton from "../buttons/favourite-button/FavouriteButton";
 import ShareButton from "../buttons/share-button/ShareButton";
 import "./GifItem.css";
+import PlaceholderImage from "../../assets/placeholder-image.gif";
 
 type Props = {
   gif: Gif;
@@ -14,11 +15,25 @@ function GifItem(props: Props) {
 
   return (
     <Item>
-      <Item.Image src={gifUrl} size="medium" rounded />
+      <Item.Image size="medium" rounded>
+        <img
+          className="placeholder-image"
+          src={PlaceholderImage}
+          alt={title}
+          data-src={gifUrl}
+        />
+      </Item.Image>
       <Item.Content>
         <Item.Header className="white-text">{title}</Item.Header>
         <Item.Extra>
-          <Image src={profileUrl} size="tiny" rounded />
+          <Image size="tiny" rounded>
+            <img
+              className="placeholder-image"
+              src={PlaceholderImage}
+              alt={uploader}
+              data-src={profileUrl}
+            />
+          </Image>
         </Item.Extra>
         <Item.Meta className="white-meta-text">
           Uploader: <strong>{uploader}</strong>

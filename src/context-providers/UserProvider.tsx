@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import { FavouritesContext } from "./FavouritesProvider";
-import { provider, auth } from "../firebase";
+import { provider, auth } from "../utils/firebase";
 
 type User = {
   uid: string;
