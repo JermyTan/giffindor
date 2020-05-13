@@ -1,22 +1,8 @@
 import React, { useState } from "react";
 import { Icon, Modal, TransitionablePortal, Image } from "semantic-ui-react";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TelegramShareButton,
-  TelegramIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-  EmailShareButton,
-  EmailIcon,
-  LinkedinShareButton,
-  LinkedinIcon,
-  LineShareButton,
-  LineIcon,
-} from "react-share";
-import "../RevealingLabel.scss";
-import "../SocialMediaIcons.scss";
 import { Gif } from "../../gif-list/GifList";
+import SocialMediaButton from "../social-media-buttons/SocialMediaButtons";
+import "../RevealingLabel.scss";
 
 type Props = {
   gif: Gif;
@@ -57,41 +43,7 @@ function ShareButton(props: Props) {
               </a>
               <br />
               <br />
-              <div className="social-media-icons-container">
-                <FacebookShareButton
-                  url={gif.gifUrl}
-                  className="social-media-icon"
-                >
-                  <FacebookIcon size={32} round />
-                </FacebookShareButton>
-                <TelegramShareButton
-                  url={gif.gifUrl}
-                  className="social-media-icon"
-                >
-                  <TelegramIcon size={32} round />
-                </TelegramShareButton>
-                <WhatsappShareButton
-                  url={gif.gifUrl}
-                  className="social-media-icon"
-                >
-                  <WhatsappIcon size={32} round />
-                </WhatsappShareButton>
-                <EmailShareButton
-                  url={gif.gifUrl}
-                  className="social-media-icon"
-                >
-                  <EmailIcon size={32} round />
-                </EmailShareButton>
-                <LinkedinShareButton
-                  url={gif.gifUrl}
-                  className="social-media-icon"
-                >
-                  <LinkedinIcon size={32} round />
-                </LinkedinShareButton>
-                <LineShareButton url={gif.gifUrl} className="social-media-icon">
-                  <LineIcon size={32} round />
-                </LineShareButton>
-              </div>
+              <SocialMediaButton gifUrl={gif.gifUrl} />
             </Modal.Description>
           </Modal.Content>
         </Modal>
