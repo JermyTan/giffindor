@@ -107,24 +107,40 @@ export function useFetchGif(data: any, dispatch: Dispatch) {
 }
 
 export function useFavourites(uid: string) {
-  const [favourites, setFavourites] = useState(new Set<string>());
+  const [favouritesData, setFavouritesData] = useState([
+    new Set<string>(),
+    Array<Gif>(),
+  ]);
 
   const ref = firebase.database().ref(`users/${uid}/favouriteGifs`);
 
   useEffect(() => {
+    const retrieveFavouritesData = async (gifIds: string[]) => {
+      try {
+        const ids = gifIds.join(",");
+        const response = await Axios.get(
+          `https://api.giphy.com/v1/gifs?api_key=${giphyApiKey}&ids=${ids}`
+        );
+        const parsedData: Gif[] = parseData(response.data.data);
+        setFavouritesData([new Set(gifIds), parsedData]);
+      } catch (error) {
+        console.log(error);
+        setFavouritesData([new Set(), []]);
+      }
+    };
     // retrieves favourite gifs and set up observer on db
     ref.on("value", (snapshot) => {
       const result = snapshot.val();
       console.log(result);
-      setFavourites(new Set(Object.keys(result ?? {})));
+      retrieveFavouritesData(Object.keys(result ?? {}));
     });
     // cleanup function, removes observer
     return () => ref.off("value");
-  });
+  }, [uid]);
 
   const addToFavourites = (gifId: string) => ref.child(gifId).set(true);
 
   const removeFromFavourites = (gifId: string) => ref.child(gifId).remove();
 
-  return [favourites, addToFavourites, removeFromFavourites];
+  return [...favouritesData, addToFavourites, removeFromFavourites];
 }

@@ -6,14 +6,17 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import UserProvider from "./context-providers/UserProvider";
 import FavouritesProvider from "./context-providers/FavouritesProvider";
+import AuthProvider from "./context-providers/AuthProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <FavouritesProvider>
-      <UserProvider>
-        <App />
-      </UserProvider>
-    </FavouritesProvider>
+    <UserProvider>
+      <FavouritesProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </FavouritesProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

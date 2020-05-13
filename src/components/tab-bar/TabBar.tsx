@@ -12,7 +12,7 @@ function TabBar() {
   const { showFavourites, setShowFavourites } = useContext(FavouritesContext);
 
   const onTabClick = (event: any, data: any) => {
-    setShowFavourites(data.showFavourites);
+    setShowFavourites(data.name === "true");
   };
 
   return (
@@ -26,7 +26,7 @@ function TabBar() {
       >
         <Menu.Item
           className="bottom-tab"
-          showFavourites={false}
+          name="false"
           active={!showFavourites}
           onClick={onTabClick}
         >
@@ -35,7 +35,7 @@ function TabBar() {
         </Menu.Item>
         <Menu.Item
           className="bottom-tab"
-          showFavourites={true}
+          name="true"
           active={showFavourites}
           onClick={onTabClick}
         >
