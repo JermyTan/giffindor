@@ -1,5 +1,4 @@
-import React, { useContext, useState, createContext } from "react";
-import { UserContext } from "./UserProvider";
+import React, { useState, createContext } from "react";
 
 type FavouritesContextType = {
   showFavourites: boolean;
@@ -12,15 +11,13 @@ export const FavouritesContext = createContext<FavouritesContextType>({
 });
 
 function FavouritesProvider(props: any) {
-  const { user } = useContext(UserContext);
   const [showFavourites, setShowFavourites] = useState(false);
 
   return (
     <FavouritesContext.Provider
       value={{
         showFavourites: showFavourites,
-        setShowFavourites: (showFavourites: boolean) =>
-          setShowFavourites(showFavourites && user !== null),
+        setShowFavourites: setShowFavourites,
       }}
     >
       {props.children}

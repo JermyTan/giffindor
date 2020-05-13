@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
+import { FavouritesContext } from "./FavouritesProvider";
 import { provider, auth } from "../firebase";
 
 type User = {
@@ -21,6 +22,7 @@ export const UserContext = createContext<UserContextType>({
 });
 
 function UserProvider(props: any) {
+  const { setShowFavourites } = useContext(FavouritesContext);
   const [user, setUser] = useState<User | null>(null);
 
   const login = () => {
@@ -47,7 +49,10 @@ function UserProvider(props: any) {
   const logout = () => {
     auth
       .signOut()
-      .then(() => setUser(null))
+      .then(() => {
+        setUser(null);
+        setShowFavourites(false);
+      })
       .catch((error) => {
         console.log(error);
       });

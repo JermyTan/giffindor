@@ -9,11 +9,11 @@ import FavouritesProvider from "./context-providers/FavouritesProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
-      <FavouritesProvider>
+    <FavouritesProvider>
+      <UserProvider>
         <App />
-      </FavouritesProvider>
-    </UserProvider>
+      </UserProvider>
+    </FavouritesProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
