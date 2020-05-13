@@ -1,0 +1,17 @@
+.bottom-tab-bar {
+  bottom: 0;
+  position: fixed;
+  border-radius: 0 !important;
+  z-index: 100;
+  background-color: #0097a7 !important;
+  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12),
+    0 2px 10px 0 rgba(34, 36, 38, 0.15) !important;
+}
+
+.bottom-tab {
+  color: white !important;
+}
+
+.visible.transition {
+  display: flex !important;
+}

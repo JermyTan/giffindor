@@ -5,7 +5,7 @@ import "./Header.css";
 
 function Header() {
   return (
-    <Segment className="header-bar" raised compact>
+    <Segment className="header-bar" raised>
       <AuthButton className="header-field" />
       <strong className="header-title">Trending</strong>
       <Input
