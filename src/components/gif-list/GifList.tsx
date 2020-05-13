@@ -1,12 +1,12 @@
-import React, { useRef, useReducer } from "react";
+import React, { useRef, useReducer, useContext } from "react";
 import { Container, Item, Loader } from "semantic-ui-react";
 import {
   useInfiniteScroll,
   useFetchGif,
-  useLazyLoading,
   Action,
 } from "../../utils/custom-hooks";
 import GifItem from "../gif-item/GifItem";
+import { FavouritesContext } from "../../context-providers/FavouritesProvider";
 
 export type Gif = {
   id: string;
@@ -27,6 +27,8 @@ type PageState = {
 };
 
 function GifList() {
+  const { showFavourites, favourites } = useContext(FavouritesContext);
+
   const gifReducer = (state: ListState, action: Action) => {
     switch (action.type) {
       case "CONCAT_GIFS":
@@ -56,12 +58,11 @@ function GifList() {
   let bottomBoundaryRef = useRef(null);
   useFetchGif(pageState, listDispatch);
   useInfiniteScroll(bottomBoundaryRef, pageDispatch);
-  useLazyLoading(".placeholder-image", listState.gifs);
 
   return (
     <Container style={{ marginBottom: "4rem" }}>
       <Item.Group divided>
-        {listState.gifs.map((gif) => (
+        {(showFavourites ? favourites : listState.gifs).map((gif) => (
           <GifItem key={gif.id} gif={gif} />
         ))}
       </Item.Group>

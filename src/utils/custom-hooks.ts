@@ -38,32 +38,6 @@ function parseData(data: any[]): Gif[] {
   });
 }
 
-export function useLazyLoading(gifSelector: any, items: any) {
-  const gifObserver = useCallback((node) => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.intersectionRatio > 0) {
-          const currentGif = entry.target as any;
-          const newGifSrc = currentGif.dataset.src;
-          currentGif.src = !newGifSrc ? AvatarImage : newGifSrc;
-          observer.unobserve(node);
-        }
-      });
-    });
-    observer.observe(node);
-  }, []);
-
-  const gifsRef = useRef<NodeListOf<any>>();
-
-  useEffect(() => {
-    gifsRef.current = document.querySelectorAll(gifSelector);
-
-    if (gifsRef.current) {
-      gifsRef.current.forEach((gif) => gifObserver(gif));
-    }
-  }, [gifObserver, gifsRef, gifSelector, items]);
-}
-
 export function useInfiniteScroll(scrollRef: any, dispatch: Dispatch) {
   const scrollObserver = useCallback(
     (node) => {

@@ -5,7 +5,9 @@ import FavouriteButton from "../buttons/favourite-button/FavouriteButton";
 import ShareButton from "../buttons/share-button/ShareButton";
 import "./GifItem.css";
 import PlaceholderImage from "../../assets/placeholder-image.gif";
+import AvatarImage from "../../assets/avatar.jpg";
 import { UserContext } from "../../context-providers/UserProvider";
+import ProgressiveImage from "react-progressive-graceful-image";
 
 type Props = {
   gif: Gif;
@@ -18,23 +20,20 @@ function GifItem(props: Props) {
   return (
     <Item>
       <Item.Image size="medium" rounded>
-        <img
-          className="placeholder-image"
-          src={PlaceholderImage}
-          alt={title}
-          data-src={gifUrl}
-        />
+        <ProgressiveImage src={gifUrl} placeholder={PlaceholderImage}>
+          {(src: string) => <img src={src} alt={title} />}
+        </ProgressiveImage>
       </Item.Image>
       <Item.Content>
         <Item.Header className="white-text">{title}</Item.Header>
         <Item.Extra>
           <Image size="tiny" rounded>
-            <img
-              className="placeholder-image"
-              src={PlaceholderImage}
-              alt={uploader}
-              data-src={profileUrl}
-            />
+            <ProgressiveImage
+              src={profileUrl ?? AvatarImage}
+              placeholder={PlaceholderImage}
+            >
+              {(src: string) => <img src={src} alt={title} />}
+            </ProgressiveImage>
           </Image>
         </Item.Extra>
         <Item.Meta className="white-meta-text">
