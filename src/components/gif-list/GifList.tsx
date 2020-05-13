@@ -60,7 +60,7 @@ function GifList() {
   useInfiniteScroll(bottomBoundaryRef, pageDispatch);
 
   return (
-    <Container style={{ marginBottom: "4rem" }}>
+    <Container style={{ marginBottom: "5rem" }}>
       <Item.Group divided>
         {(showFavourites ? favourites : listState.gifs).map((gif) => (
           <GifItem key={gif.id} gif={gif} />

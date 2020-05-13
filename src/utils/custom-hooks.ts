@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import firebase from "./firebase";
 import Axios from "axios";
 import { giphyApiKey } from "../config/keys";
@@ -14,7 +14,7 @@ export type Action = {
 
 type Dispatch = (action: Action) => void;
 
-const LIMIT = 10;
+const LIMIT = 5;
 
 /*
 ".id";
@@ -54,6 +54,8 @@ export function useInfiniteScroll(scrollRef: any, dispatch: Dispatch) {
   );
 
   useEffect(() => {
+    console.log("scrollRef", scrollRef);
+    console.log("scrollRef.currrent", scrollRef.current);
     if (scrollRef.current) {
       scrollObserver(scrollRef.current);
     }
