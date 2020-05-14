@@ -61,7 +61,7 @@ export function useInfiniteScroll(scrollRef: any, dispatch: Dispatch) {
   }, [scrollObserver, scrollRef]);
 }
 
-export function useFetchGif(data: any, dispatch: Dispatch) {
+export function useTrendingGif(data: any, dispatch: Dispatch) {
   useEffect(() => {
     dispatch({ type: "FETCH_GIFS", fetching: true });
     Axios.get(
@@ -79,6 +79,30 @@ export function useFetchGif(data: any, dispatch: Dispatch) {
       }
     });
   }, [data.page, dispatch]);
+}
+
+export function useSearchGif(
+  data: any,
+  searchTerm: string,
+  dispatch: Dispatch
+) {
+  useEffect(() => {
+    dispatch({ type: "FETCH_GIFS", fetching: true });
+    console.log("Search term:", searchTerm);
+    console.log("page:", data.page);
+    Axios.get(
+      `https://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&q=${searchTerm}&limit=${LIMIT}&offset={state.page * LIMIT}`
+    ).then((response) => {
+      console.log(response);
+      if (response.status === 200) {
+        const parsedData: Gif[] = parseData(response.data.data);
+        console.log(parsedData);
+
+        dispatch({ type: "CONCAT_GIFS", gifs: parsedData });
+        dispatch({ type: "FETCH_GIFS", fetching: false });
+      }
+    });
+  }, [data.page, searchTerm, dispatch]);
 }
 
 export function useFavourites(uid: string) {
@@ -99,7 +123,6 @@ export function useFavourites(uid: string) {
         const parsedData: Gif[] = parseData(response.data.data);
         setFavouritesData([new Set(gifIds), parsedData]);
       } catch (error) {
-        console.log(error);
         setFavouritesData([new Set(), []]);
       }
     };
