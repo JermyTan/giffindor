@@ -1,6 +1,7 @@
 import React from "react";
-import { Segment, Input, Icon } from "semantic-ui-react";
+import { Segment } from "semantic-ui-react";
 import AuthButton from "./auth-button/AuthButton";
+import SearchBar from "./search-bar/SearchBar";
 import "./AppBar.css";
 
 function AppBar() {
@@ -8,12 +9,7 @@ function AppBar() {
     <Segment className="app-bar" raised>
       <AuthButton className="header-field" />
       <strong className="header-title">Trending</strong>
-      <Input
-        className="header-field"
-        placeholder="Search..."
-        onKeyDown={(event: any) => console.log(event.key)}
-        icon={<Icon link name="close" />}
-      />
+      <SearchBar className="header-field" />
     </Segment>
   );
 }

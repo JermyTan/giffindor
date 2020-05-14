@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Icon } from "semantic-ui-react";
-import { FavouritesContext } from "../../../../../context-providers/FavouritesProvider";
+import { FavouritesContext } from "../../../../context-providers/FavouritesProvider";
 import "../RevealingLabel.scss";
 
 type Props = {

@@ -7,13 +7,16 @@ import * as serviceWorker from "./serviceWorker";
 import UserProvider from "./context-providers/UserProvider";
 import FavouritesProvider from "./context-providers/FavouritesProvider";
 import AuthProvider from "./context-providers/AuthProvider";
+import SearchProvider from "./context-providers/SearchProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <FavouritesProvider>
         <AuthProvider>
-          <App />
+          <SearchProvider>
+            <App />
+          </SearchProvider>
         </AuthProvider>
       </FavouritesProvider>
     </UserProvider>

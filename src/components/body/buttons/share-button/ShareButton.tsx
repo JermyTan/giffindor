@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Icon, Modal, TransitionablePortal, Image } from "semantic-ui-react";
-import { Gif } from "../../GifList";
+import { Gif } from "../../gif-list/GifList";
 import SocialMediaButton from "./social-media-buttons/SocialMediaButtons";
 import "../RevealingLabel.scss";
 
