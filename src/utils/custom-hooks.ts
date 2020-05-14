@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import firebase from "./firebase";
 import Axios from "axios";
 import { giphyApiKey } from "../keys";
-import { Gif } from "../components/body/gif-list/GifList";
+import { Gif } from "../components/body/gif-item/GifItem";
 
 type ActionType = "CONCAT_GIFS" | "FETCH_GIFS" | "NEXT_PAGE";
 
