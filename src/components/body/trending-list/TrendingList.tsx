@@ -16,7 +16,7 @@ type PageState = {
   page: number;
 };
 
-function GifList() {
+function TrendingList() {
   const gifReducer = (state: ListState, action: Action) => {
     switch (action.type) {
       case "CONCAT_GIFS":
@@ -62,4 +62,4 @@ function GifList() {
   );
 }
 
-export default GifList;
+export default TrendingList;
