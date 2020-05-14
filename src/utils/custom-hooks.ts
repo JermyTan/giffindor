@@ -1,9 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import firebase from "./firebase";
 import Axios from "axios";
-import { giphyApiKey } from "../config/keys";
+import { giphyApiKey } from "../keys";
 import { Gif } from "../components/gif-list/GifList";
-import AvatarImage from "../assets/avatar.jpg";
 
 type ActionType = "CONCAT_GIFS" | "FETCH_GIFS" | "NEXT_PAGE";
 

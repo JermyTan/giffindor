@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import { firebaseConfig } from "../config/keys";
+import { firebaseConfig } from "../keys";
 
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
