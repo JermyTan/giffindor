@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
 import { useFavourites } from "../utils/custom-hooks";
 import { UserContext } from "./UserProvider";
-import { Gif } from "../components/gif-list/GifList";
+import { Gif } from "../components/body/gif-list/GifList";
 
 type FavouritesContextType = {
   showFavourites: boolean;

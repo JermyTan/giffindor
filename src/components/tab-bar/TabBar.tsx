@@ -4,9 +4,6 @@ import { UserContext } from "../../context-providers/UserProvider";
 import { FavouritesContext } from "../../context-providers/FavouritesProvider";
 import "./TabBar.scss";
 
-const HOME = "Home";
-const FAVOURITE = "Favourite";
-
 function TabBar() {
   const { user } = useContext(UserContext);
   const { showFavourites, setShowFavourites } = useContext(FavouritesContext);
@@ -31,7 +28,7 @@ function TabBar() {
           onClick={onTabClick}
         >
           <Icon name="home" />
-          {HOME}
+          Home
         </Menu.Item>
         <Menu.Item
           className="bottom-tab"
@@ -40,7 +37,7 @@ function TabBar() {
           onClick={onTabClick}
         >
           <Icon name="star" />
-          {FAVOURITE}
+          Favourites
         </Menu.Item>
       </Menu>
     </Transition>

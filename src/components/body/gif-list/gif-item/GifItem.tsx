@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Item, Image } from "semantic-ui-react";
-import { Gif } from "../gif-list/GifList";
-import FavouriteButton from "../buttons/favourite-button/FavouriteButton";
-import ShareButton from "../buttons/share-button/ShareButton";
-import "./GifItem.css";
-import PlaceholderImage from "../../assets/placeholder-image.gif";
-import AvatarImage from "../../assets/avatar.jpg";
-import { UserContext } from "../../context-providers/UserProvider";
+import FavouriteButton from "./favourite-button/FavouriteButton";
+import ShareButton from "./share-button/ShareButton";
+import { Gif } from "../GifList";
+import PlaceholderImage from "../../../../assets/placeholder-image.gif";
+import AvatarImage from "../../../../assets/avatar.jpg";
+import { UserContext } from "../../../../context-providers/UserProvider";
 import ProgressiveImage from "react-progressive-graceful-image";
+import "./GifItem.scss";
 
 type Props = {
   gif: Gif;

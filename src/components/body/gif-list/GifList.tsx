@@ -4,9 +4,9 @@ import {
   useInfiniteScroll,
   useFetchGif,
   Action,
-} from "../../utils/custom-hooks";
-import GifItem from "../gif-item/GifItem";
-import { FavouritesContext } from "../../context-providers/FavouritesProvider";
+} from "../../../utils/custom-hooks";
+import GifItem from "./gif-item/GifItem";
+import { FavouritesContext } from "../../../context-providers/FavouritesProvider";
 
 export type Gif = {
   id: string;
