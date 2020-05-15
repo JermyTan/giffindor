@@ -14,6 +14,7 @@ function AuthButton(props: Props) {
 
   return (
     <Button
+      data-testid="auth-button"
       content={user ? "Logout" : "Login"}
       onClick={user ? logout : login}
       style={props.style}

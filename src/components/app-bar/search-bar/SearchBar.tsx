@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Input, Icon, Transition, TransitionGroup } from "semantic-ui-react";
+import { Input, Icon, Transition } from "semantic-ui-react";
 import { SearchContext } from "../../../context-providers/SearchProvider";
 import { FavouritesContext } from "../../../context-providers/FavouritesProvider";
 import "./SearchBar.scss";
 
 type Props = {
-  style?: any;
   className?: string;
 };
 
@@ -27,8 +26,9 @@ function SearchBar(props: Props) {
 
   return (
     <Input
+      data-testid="search-bar"
       style={showFavourites ? hideStyle : {}}
-      className="header-field"
+      className={props.className}
       placeholder="Search..."
       value={inputTerm}
       onChange={(event, data) => setInputTerm(data.value)}

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches login snapshot 1`] = `
+<button
+  className="ui button header-field"
+  data-testid="auth-button"
+  onClick={[Function]}
+>
+  Login
+</button>
+`;
+
+exports[`matches logout snapshot 1`] = `
+<button
+  className="ui button header-field"
+  data-testid="auth-button"
+  onClick={[Function]}
+>
+  Logout
+</button>
+`;
