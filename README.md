@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Giffindor
+
+Website: <https://giffindor.jermytan.com/>
+
+A gif search webapp that supports both mobile and desktop view. For the full mobile experience, trying installing this webapp to home screen. E.g. visit the site -> option -> "Add to Home Screen"
+
+## Features
+
+- View trending gifs
+- Custom search for gifs
+- Save and load your favourite gifs using your google account
+- Share gifs with your friends through common social media platforms
+
+## Setup
+
+1. Clone this repo
+2. Place `keys.js` in `giffindor/src`
+3. Proceed to run the available scripts
+
+Note: contact <tanjkq@seagroup.com> for `keys.js`
 
 ## Available Scripts
 
@@ -37,8 +56,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
