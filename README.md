@@ -1,4 +1,4 @@
-#Giffindor
+# Giffindor
 
 Website: <https://giffindor.jermytan.com/>
 
@@ -15,13 +15,18 @@ A gif search webapp that supports both mobile and desktop view. For the full mob
 
 1. Clone this repo
 2. Place `keys.js` in `giffindor/src`
-3. Proceed to run the available scripts
+3. Run `yarn install` to include all dependencies
+3. Proceed to run the other available scripts
 
 Note: contact <tanjkq@seagroup.com> for `keys.js`
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+Install all app dependencies.
 
 ### `yarn start`
 
