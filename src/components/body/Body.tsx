@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { Container } from "semantic-ui-react";
-import "./Body.scss";
 import FavouritesList from "./favourites-list/FavouritesList";
 import TrendingList from "./trending-list/TrendingList";
 import SearchList from "./search-list/SearchList";
@@ -21,7 +19,7 @@ function Body() {
     }
   };
 
-  return <Container className="body">{renderGifList()}</Container>;
+  return renderGifList();
 }
 
 export default Body;

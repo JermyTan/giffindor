@@ -3,17 +3,9 @@ import firebase from "./firebase";
 import Axios from "axios";
 import { giphyApiKey } from "../keys";
 import { Gif } from "../components/body/gif-item/GifItem";
+import { IndexRange } from "react-virtualized";
 
-type ActionType = "CONCAT_GIFS" | "FETCH_GIFS" | "NEXT_PAGE";
-
-export type Action = {
-  type: ActionType;
-  [key: string]: any;
-};
-
-type Dispatch = (action: Action) => void;
-
-const LIMIT = 5;
+const LIMIT = 10;
 
 /*
 ".id";
@@ -37,72 +29,74 @@ function parseData(data: any[]): Gif[] {
   });
 }
 
-export function useInfiniteScroll(scrollRef: any, dispatch: Dispatch) {
-  const scrollObserver = useCallback(
-    (node) => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio > 0) {
-            dispatch({ type: "NEXT_PAGE" });
-          }
-        });
-      });
-      observer.observe(node);
-    },
-    [dispatch]
-  );
+export function useTrendingGif() {
+  const [loading, setLoading] = useState(false);
+  const [gifs, setGifs] = useState<Gif[]>([]);
+  const [hasNextPage, setHasNextPage] = useState(true);
 
-  useEffect(() => {
-    console.log("scrollRef", scrollRef);
-    console.log("scrollRef.currrent", scrollRef.current);
-    if (scrollRef.current) {
-      scrollObserver(scrollRef.current);
-    }
-  }, [scrollObserver, scrollRef]);
-}
+  const fetchTrendingGifs = (params: IndexRange) => {
+    setLoading(true);
+    const { startIndex, stopIndex } = params;
 
-export function useTrendingGif(data: any, dispatch: Dispatch) {
-  useEffect(() => {
-    dispatch({ type: "FETCH_GIFS", fetching: true });
-    Axios.get(
-      `https://api.giphy.com/v1/gifs/trending?api_key=${giphyApiKey}&offset=${
-        data.page * LIMIT
-      }&limit=${LIMIT}`
+    return Axios.get(
+      `https://api.giphy.com/v1/gifs/trending?api_key=${giphyApiKey}&offset=${startIndex}&limit=${
+        stopIndex - startIndex + LIMIT
+      }`
     ).then((response) => {
       console.log(response);
       if (response.status === 200) {
         const parsedData: Gif[] = parseData(response.data.data);
         console.log(parsedData);
 
-        dispatch({ type: "CONCAT_GIFS", gifs: parsedData });
-        dispatch({ type: "FETCH_GIFS", fetching: false });
+        if (parsedData.length < LIMIT) {
+          setHasNextPage(false);
+        }
+
+        setGifs(gifs.concat(parsedData));
+        setLoading(false);
       }
     });
-  }, [data.page, dispatch]);
+  };
+
+  return [loading, gifs, hasNextPage, fetchTrendingGifs];
 }
 
-export function useSearchGif(
-  data: any,
-  searchTerm: string,
-  dispatch: Dispatch
-) {
+export function useSearchGif(searchTerm: string) {
+  const [loading, setLoading] = useState(false);
+  const [gifs, setGifs] = useState<Gif[]>([]);
+  const [hasNextPage, setHasNextPage] = useState(true);
+
   useEffect(() => {
-    dispatch({ type: "FETCH_GIFS", fetching: true });
-    console.log("Search term:", searchTerm);
-    console.log("page:", data.page);
-    Axios.get(
-      `https://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&q=${searchTerm}&limit=${LIMIT}&offset={state.page * LIMIT}`
+    setGifs([]);
+    setHasNextPage(true);
+    setLoading(false);
+  }, [searchTerm]);
+
+  const fetchSearchGifs = (params: IndexRange) => {
+    setLoading(true);
+    const { startIndex, stopIndex } = params;
+    console.log(startIndex, stopIndex);
+    return Axios.get(
+      `https://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&q=${searchTerm}&limit=${
+        stopIndex - startIndex + LIMIT
+      }&offset=${startIndex}`
     ).then((response) => {
       console.log(response);
       if (response.status === 200) {
         const parsedData: Gif[] = parseData(response.data.data);
         console.log(parsedData);
 
-        dispatch({ type: "CONCAT_GIFS", gifs: parsedData });
-        dispatch({ type: "FETCH_GIFS", fetching: false });
+        if (parsedData.length < LIMIT) {
+          setHasNextPage(false);
+        }
+
+        setGifs(gifs.concat(parsedData));
+        setLoading(false);
       }
     });
-  }, [data.page, searchTerm, dispatch]);
+  };
+
+  return [loading, gifs, hasNextPage, fetchSearchGifs];
 }
 
 export function useFavourites(uid: string) {
@@ -142,3 +136,39 @@ export function useFavourites(uid: string) {
 
   return [...favouritesData, addToFavourites, removeFromFavourites];
 }
+
+/*
+
+type ActionType = "CONCAT_GIFS" | "FETCH_GIFS" | "NEXT_PAGE";
+
+export type Action = {
+  type: ActionType;
+  [key: string]: any;
+};
+
+type Dispatch = (action: Action) => void;
+
+export function useInfiniteScroll(scrollRef: any, dispatch: Dispatch) {
+  const scrollObserver = useCallback(
+    (node) => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio > 0) {
+            dispatch({ type: "NEXT_PAGE" });
+          }
+        });
+      });
+      observer.observe(node);
+    },
+    [dispatch]
+  );
+
+  useEffect(() => {
+    console.log("scrollRef", scrollRef);
+    console.log("scrollRef.currrent", scrollRef.current);
+    if (scrollRef.current) {
+      scrollObserver(scrollRef.current);
+    }
+  }, [scrollObserver, scrollRef]);
+}
+*/

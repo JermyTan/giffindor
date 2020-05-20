@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
-import { Item } from "semantic-ui-react";
 import { FavouritesContext } from "../../../context-providers/FavouritesProvider";
-import GifItem, { Gif } from "../gif-item/GifItem";
+import GifList from "../gif-list/GifList";
+import { IndexRange } from "react-virtualized";
 
 function FavouritesList() {
   const { favourites } = useContext(FavouritesContext);
 
   return (
-    <Item.Group divided>
-      {favourites.map((gif: Gif, value) => (
-        <GifItem key={value} gif={gif} />
-      ))}
-    </Item.Group>
+    <GifList
+      hasNextPage={false}
+      isNextPageLoading={false}
+      gifs={favourites}
+      loadNextPage={(params: IndexRange) => {}}
+    />
   );
 }
 
