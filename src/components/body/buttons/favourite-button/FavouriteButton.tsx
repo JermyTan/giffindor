@@ -23,7 +23,6 @@ function FavouriteButton(props: Props) {
       size={size}
       link
       onClick={() => {
-        console.log(favourited, gifId);
         favourited ? removeFromFavourites(gifId) : addToFavourites(gifId);
       }}
     >
