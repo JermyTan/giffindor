@@ -1,4 +1,4 @@
-# Giffindor
+# Giffindor + Redux
 
 Website: <https://giffindor.jermytan.com/>
 
@@ -6,7 +6,7 @@ A gif search webapp that supports both mobile and desktop view. For the full mob
 
 ## Alternative
 
-See [here](https://git.garena.com/tanjkq/giffindor/tree/redux) for implementation of Giffindor with Redux
+See [here](https://git.garena.com/tanjkq/giffindor/tree/master) for implementation of Giffindor with React Context
 
 ## Features
 
