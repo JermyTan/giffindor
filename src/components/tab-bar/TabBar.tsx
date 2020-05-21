@@ -1,15 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Menu, Icon, Transition } from "semantic-ui-react";
-import { UserContext } from "../../context-providers/UserProvider";
-import { FavouritesContext } from "../../context-providers/FavouritesProvider";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser, getShowFavourites } from "../../redux/selectors";
+import { toggleFavourites } from "../../redux/actions";
 import "./TabBar.scss";
 
 function TabBar() {
-  const { user } = useContext(UserContext);
-  const { showFavourites, setShowFavourites } = useContext(FavouritesContext);
+  const user = useSelector(getUser);
+  const showFavourites = useSelector(getShowFavourites);
+  const dispatch = useDispatch();
 
   const onTabClick = (event: any, data: any) => {
-    setShowFavourites(data.name === "true");
+    dispatch(toggleFavourites(data.name === "true"));
   };
 
   return (

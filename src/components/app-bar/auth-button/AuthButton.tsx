@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Button } from "semantic-ui-react";
-import { UserContext } from "../../../context-providers/UserProvider";
+import { useSelector } from "react-redux";
+import { getUser } from "../../../redux/selectors";
 import { AuthContext } from "../../../context-providers/AuthProvider";
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 };
 
 function AuthButton(props: Props) {
-  const { user } = useContext(UserContext);
+  const user = useSelector(getUser);
   const { login, logout } = useContext(AuthContext);
 
   return (

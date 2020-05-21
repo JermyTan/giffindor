@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Input, Icon, Transition } from "semantic-ui-react";
-import { SearchContext } from "../../../context-providers/SearchProvider";
-import { FavouritesContext } from "../../../context-providers/FavouritesProvider";
+import { useSelector, useDispatch } from "react-redux";
+import { getShowFavourites } from "../../../redux/selectors";
+import { setSearchTerm } from "../../../redux/actions";
 import "./SearchBar.scss";
 
 type Props = {
@@ -13,13 +14,16 @@ const hideStyle = {
 };
 
 function SearchBar(props: Props) {
-  const { setSearchTerm } = useContext(SearchContext);
-  const { showFavourites } = useContext(FavouritesContext);
+  const showFavourites = useSelector(getShowFavourites);
+  const dispatch = useDispatch();
+  const updateSearchTerm = (searchTerm: string) => {
+    dispatch(setSearchTerm(searchTerm));
+  };
   const [inputTerm, setInputTerm] = useState("");
 
   const clearSearch = () => {
     setInputTerm("");
-    setSearchTerm("");
+    updateSearchTerm("");
   };
 
   showFavourites && inputTerm && clearSearch();
@@ -33,7 +37,7 @@ function SearchBar(props: Props) {
       value={inputTerm}
       onChange={(event, data) => setInputTerm(data.value)}
       onKeyDown={(event: any) => {
-        event.key === "Enter" && setSearchTerm(inputTerm);
+        event.key === "Enter" && updateSearchTerm(inputTerm);
       }}
       icon={
         <Transition visible={inputTerm !== ""} unmountOnHide animation="scale">

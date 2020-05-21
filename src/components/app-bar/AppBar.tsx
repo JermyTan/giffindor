@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Segment } from "semantic-ui-react";
 import AuthButton from "./auth-button/AuthButton";
 import SearchBar from "./search-bar/SearchBar";
-import { FavouritesContext } from "../../context-providers/FavouritesProvider";
-import { SearchContext } from "../../context-providers/SearchProvider";
+import { useSelector } from "react-redux";
+import { getSearchTerm, getShowFavourites } from "../../redux/selectors";
 import "./AppBar.scss";
 
 function AppBar() {
-  const { showFavourites } = useContext(FavouritesContext);
-  const { searchTerm } = useContext(SearchContext);
+  const searchTerm = useSelector(getSearchTerm);
+  const showFavourites = useSelector(getShowFavourites);
 
   const renderTitle = () => {
     if (showFavourites) {

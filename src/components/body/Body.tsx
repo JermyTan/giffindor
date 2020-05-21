@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import FavouritesList from "./favourites-list/FavouritesList";
 import TrendingList from "./trending-list/TrendingList";
 import SearchList from "./search-list/SearchList";
-import { FavouritesContext } from "../../context-providers/FavouritesProvider";
-import { SearchContext } from "../../context-providers/SearchProvider";
+import { useSelector } from "react-redux";
+import { getSearchTerm, getShowFavourites } from "../../redux/selectors";
 
 function Body() {
-  const { showFavourites } = useContext(FavouritesContext);
-  const { searchTerm } = useContext(SearchContext);
+  const searchTerm = useSelector(getSearchTerm);
+  const showFavourites = useSelector(getShowFavourites);
 
   const renderGifList = () => {
     if (showFavourites) {

@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import GifList from "../gif-list/GifList";
 import { IndexRange } from "react-virtualized";
 import { Gif } from "../gif-item/GifItem";
 import { useSearchGif } from "../../../utils/custom-hooks";
-import { SearchContext } from "../../../context-providers/SearchProvider";
+import { useSelector } from "react-redux";
+import { getSearchTerm } from "../../../redux/selectors";
 
 function SearchList() {
-  const { searchTerm } = useContext(SearchContext);
+  const searchTerm = useSelector(getSearchTerm);
   const [loading, gifs, hasNextPage, fetchSearchGifs] = useSearchGif(
     searchTerm
   );

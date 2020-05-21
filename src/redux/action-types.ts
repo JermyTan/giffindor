@@ -1,0 +1,3 @@
+export const SET_SEARCH_TERM = "SET_SEARCH_TERM";
+export const SET_USER = "SET_USER";
+export const TOGGLE_FAVOURITES = "TOGGLE_FAVOURITES";

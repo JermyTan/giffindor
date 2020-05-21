@@ -1,11 +1,10 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { createContext } from "react";
 import { useFavourites } from "../utils/custom-hooks";
-import { UserContext } from "./UserProvider";
 import { Gif } from "../components/body/gif-item/GifItem";
+import { useSelector } from "react-redux";
+import { getUser } from "../redux/selectors";
 
 type FavouritesContextType = {
-  showFavourites: boolean;
-  setShowFavourites: (showFavaourites: boolean) => void;
   isFavourite: (gifId: string) => boolean;
   favourites: Gif[];
   addToFavourites: (gifId: string) => void;
@@ -13,8 +12,6 @@ type FavouritesContextType = {
 };
 
 export const FavouritesContext = createContext<FavouritesContextType>({
-  showFavourites: false,
-  setShowFavourites: (showFavaourites: boolean) => {},
   isFavourite: (gifId: string) => false,
   favourites: [],
   addToFavourites: (gifId: string) => {},
@@ -22,8 +19,8 @@ export const FavouritesContext = createContext<FavouritesContextType>({
 });
 
 function FavouritesProvider(props: any) {
-  const { user } = useContext(UserContext);
-  const [showFavourites, setShowFavourites] = useState(false);
+  const user = useSelector(getUser);
+
   const [
     favouriteGifIds,
     favourites,
@@ -34,8 +31,6 @@ function FavouritesProvider(props: any) {
   return (
     <FavouritesContext.Provider
       value={{
-        showFavourites: showFavourites,
-        setShowFavourites: setShowFavourites,
         isFavourite: (gifId: string) =>
           (favouriteGifIds as Set<string>).has(gifId),
         favourites: favourites as Gif[],

@@ -13,16 +13,11 @@ export const SearchContext = createContext<SearchContextType>({
 function SearchProvider(props: any) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const setSearchTerms = (input: string) => {
-    console.log(input);
-    setSearchTerm(input);
-  };
-
   return (
     <SearchContext.Provider
       value={{
         searchTerm: searchTerm,
-        setSearchTerm: setSearchTerms,
+        setSearchTerm: setSearchTerm,
       }}
     >
       {props.children}

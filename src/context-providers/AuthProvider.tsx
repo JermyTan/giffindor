@@ -1,7 +1,7 @@
-import React, { createContext, useContext } from "react";
-import { FavouritesContext } from "./FavouritesProvider";
-import { UserContext } from "./UserProvider";
+import React, { createContext } from "react";
 import { provider, auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { toggleFavourites, setUser } from "../redux/actions";
 
 type AuthContextType = {
   login: () => void;
@@ -14,8 +14,7 @@ export const AuthContext = createContext<AuthContextType>({
 });
 
 function AuthProvider(props: any) {
-  const { setUser } = useContext(UserContext);
-  const { setShowFavourites } = useContext(FavouritesContext);
+  const dispatch = useDispatch();
 
   const login = () => {
     auth
@@ -31,7 +30,7 @@ function AuthProvider(props: any) {
               }
             : null;
 
-        setUser(user);
+        dispatch(setUser(user));
       })
       .catch((error) => {
         console.log(error);
@@ -42,8 +41,8 @@ function AuthProvider(props: any) {
     auth
       .signOut()
       .then(() => {
-        setUser(null);
-        setShowFavourites(false);
+        dispatch(setUser(null));
+        dispatch(toggleFavourites(false));
       })
       .catch((error) => {
         console.log(error);

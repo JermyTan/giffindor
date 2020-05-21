@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Item, Image, Container } from "semantic-ui-react";
 import FavouriteButton from "../buttons/favourite-button/FavouriteButton";
 import ShareButton from "../buttons/share-button/ShareButton";
 import AvatarImage from "../../../assets/avatar.jpg";
-import { UserContext } from "../../../context-providers/UserProvider";
 import ProgressiveImage from "react-progressive-graceful-image";
 import PlaceholderImage from "../../../assets/placeholder-image.gif";
+import { useSelector } from "react-redux";
+import { getUser } from "../../../redux/selectors";
 import "./GifItem.scss";
 
 export type Gif = {
@@ -25,7 +26,7 @@ type Props = {
 
 function GifItem(props: Props) {
   const { title, gifUrl, uploader, uploadDate, profileUrl } = props.gif;
-  const { user } = useContext(UserContext);
+  const user = useSelector(getUser);
 
   return (
     <div
