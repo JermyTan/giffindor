@@ -4,6 +4,10 @@ Website: <https://giffindor.jermytan.com/>
 
 A gif search webapp that supports both mobile and desktop view. For the full mobile experience, trying installing this webapp to home screen. E.g. visit the site -> option -> "Add to Home Screen"
 
+## Alternative
+
+See [here](https://git.garena.com/tanjkq/giffindor/tree/redux) for implementation of Giffindor with Redux
+
 ## Features
 
 - View trending gifs
