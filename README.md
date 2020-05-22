@@ -1,4 +1,12 @@
-# Giffindor
+<p align="center">
+  <img src="./media/giffindor-logo.png" alt="Giffindor" width="500"/>
+</p>
+
+<p align="center">
+  <img src="./media/iPhone.png" alt="iPhone" width="250"/>
+  <img src="./media/iPad.png" alt="iPad" width="250"/>
+  <img src="./media/macbook.png" alt="Macbook" width="250"/>
+</p>
 
 Website: <https://giffindor.jermytan.com/>
 
