@@ -12,16 +12,12 @@ Website: <https://giffindor.jermytan.com/>
 
 A gif search webapp that supports both mobile and desktop view. For the full mobile experience, trying installing this webapp to home screen. E.g. visit the site -> option -> "Add to Home Screen"
 
-## Alternative
-
-See [here](https://git.garena.com/tanjkq/giffindor/tree/redux) for implementation of Giffindor with Redux
-
 ## Features
 
 - View trending gifs
 - Custom search for gifs
 - Save and load your favourite gifs using your google account
-- Share gifs with your friends through common social media platforms
+- Share gifs with your friends through common social media platforms (web browser) or other native apps (mobile)
 
 ## Setup
 
@@ -30,7 +26,7 @@ See [here](https://git.garena.com/tanjkq/giffindor/tree/redux) for implementatio
 3. Run `yarn install` to include all dependencies
 3. Proceed to run the other available scripts
 
-Note: contact <tanjkq@seagroup.com> for `keys.js`
+Note: contact <tan_kai_qun97@yahoo.com.sg> for `keys.js`
 
 ## Available Scripts
 
