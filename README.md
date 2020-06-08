@@ -22,11 +22,29 @@ A gif search webapp that supports both mobile and desktop view. For the full mob
 ## Setup
 
 1. Clone this repo
-2. Place `keys.js` in `giffindor/src`
-3. Run `yarn install` to include all dependencies
-3. Proceed to run the other available scripts
+2. Create a free GIPHY API key by following this [guide](https://support.giphy.com/hc/en-us/articles/360020283431-Request-A-GIPHY-API-Key)
+3. Set up a free firebase project by following this [guide](https://firebase.google.com/docs/web/setup)
+4. Create a `keys.js` file with the following content and **replace the sample key/config with your obtained key/config from steps 2 & 3**:
 
-Note: contact <tan_kai_qun97@yahoo.com.sg> for `keys.js`
+```javascript
+module.exports = {
+  giphyApiKey: "G7ht93RE230TATza4be7dc", // sample key
+  firebaseConfig: {
+    apiKey: "AIzaSyDOCAbC123dEf456GhI789jKl01-MnO",
+    authDomain: "myapp-project-123.firebaseapp.com",
+    databaseURL: "https://myapp-project-123.firebaseio.com",
+    projectId: "myapp-project-123",
+    storageBucket: "myapp-project-123.appspot.com",
+    messagingSenderId: "65211879809",
+    appId: "1:65211879909:web:3ae38ef1cdcb2e01fe5f0c",
+    measurementId: "G-8GSGZQ44ST"
+  }, // sample config
+};
+```
+
+5. Place `keys.js` in `giffindor/src`
+6. Run `yarn install` to include all dependencies
+7. Proceed to run the other available scripts
 
 ## Available Scripts
 
