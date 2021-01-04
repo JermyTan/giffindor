@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useMemo, useState } from "react";
 import firebase from "./firebase";
 import Axios from "axios";
 import { giphyApiKey } from "../keys";
@@ -105,7 +105,10 @@ export function useFavourites(uid: string) {
     Array<Gif>(),
   ]);
 
-  const ref = firebase.database().ref(`users/${uid}/favouriteGifs`);
+  const ref = useMemo(
+    () => firebase.database().ref(`users/${uid}/favouriteGifs`),
+    [uid]
+  );
 
   useEffect(() => {
     const retrieveFavouritesData = async (gifIds: string[]) => {
@@ -128,7 +131,7 @@ export function useFavourites(uid: string) {
     });
     // cleanup function, removes observer
     return () => ref.off("value");
-  }, [uid]);
+  }, [ref]);
 
   const addToFavourites = (gifId: string) => ref.child(gifId).set(true);
 
