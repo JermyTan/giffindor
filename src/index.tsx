@@ -9,6 +9,10 @@ import FavouritesProvider from "./context-providers/FavouritesProvider";
 import AuthProvider from "./context-providers/AuthProvider";
 import SearchProvider from "./context-providers/SearchProvider";
 
+if (process.env.NODE_ENV === "production") {
+  console.log = () => {};
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
